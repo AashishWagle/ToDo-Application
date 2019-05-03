@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ToDo-2do</string>
     <string name="action_settings">Settings</string>
+    <string name="search">Search your item here..</string>
+    <string name="task_dateTime">Date Time</string>
+    <string name="taskTitle">Task Title</string>
+    <string name="Task_Date_status">Date status</string>
 </resources>
