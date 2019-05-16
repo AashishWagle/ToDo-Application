@@ -1,6 +1,11 @@
 package com.example.todo_2do;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +15,42 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TaskViewModel mViewModel;
+    private LiveData<List<Task>> mAllTask;
+    private RecyclerView mrvItem;
+    //private ImageView mivEmpty;
+    //private TextView mtxtEmpty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
+        mViewModel = ViewModelProviders.of(this).get(TaskViewModel.class);
+        mViewModel.getAllTasks().observe(this, new Observer<List<Task>>() {
+            @Override
+            public void onChanged(@Nullable List<Task> tasks) {
+                if(tasks.size() == 0){
+                    mrvItem = findViewById(R.id.rvTasks);
+                    //mivEmpty = findViewById(R.id.ivEmpty);
+                    //mtxtEmpty = findViewById(R.id.txtEmpty);
+
+                    //mivEmpty.setVisibility(mrvItem.GONE);
+                    //mtxtEmpty.setVisibility(mtxtEmpty.GONE);
+                    mrvItem.setVisibility(mrvItem.GONE);
+
+                }
+            }
+        });
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -24,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this,SubActivity.class);
+                startActivity(intent);
             }
         });
 

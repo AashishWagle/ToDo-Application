@@ -2,6 +2,7 @@ package com.example.todo_2do;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -10,61 +11,87 @@ public class Task {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "id")
-    private int mid;
+    private int id;
 
     @NonNull
-    @ColumnInfo(name = "desc")
-    private String mDesc;
+    private String desc;
 
     @NonNull
-    @ColumnInfo(name = "date")
-    private String mDate;
+    private String date;
 
-    @ColumnInfo(name = "time")
-    private String mTime;
+    private String time;
 
-    @ColumnInfo(name = "repeat")
-    private String mRepeat;
+    private String repeat;
 
     @NonNull
-    @ColumnInfo(name = "priority")
-    private String mPriority;
+    private String priority;
 
-    public Task( @NonNull String Desc, @NonNull String Date, String Time, String Repeat, @NonNull String Priority) {
-        this.mDesc = Desc;
-        this.mDate = Date;
-        this.mTime = Time;
-        this.mRepeat = Repeat;
-        this.mPriority = Priority;
+    public Task(int id, @NonNull String desc, @NonNull String date, String time, String repeat, @NonNull String priority) {
+        this.id = id;
+        this.desc = desc;
+        this.date = date;
+        this.time = time;
+        this.repeat = repeat;
+        this.priority = priority;
     }
 
-    public int getMid() {
-        return mid;
+    @Ignore
+    public Task(@NonNull String desc, @NonNull String date, String time, String repeat, @NonNull String priority) {
+        this.desc = desc;
+        this.date = date;
+        this.time = time;
+        this.repeat = repeat;
+        this.priority = priority;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDesc(@NonNull String desc) {
+        this.desc = desc;
+    }
+
+    public void setDate(@NonNull String date) {
+        this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setRepeat(String repeat) {
+        this.repeat = repeat;
+    }
+
+    public void setPriority(@NonNull String priority) {
+        this.priority = priority;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @NonNull
-    public String getmDesc() {
-        return mDesc;
+    public String getDesc() {
+        return desc;
     }
 
     @NonNull
-    public String getmDate() {
-        return mDate;
+    public String getDate() {
+        return date;
     }
 
-    public String getmTime() {
-        return mTime;
+    public String getTime() {
+        return time;
     }
 
-    public String getmRepeat() {
-        return mRepeat;
+    public String getRepeat() {
+        return repeat;
     }
 
     @NonNull
-    public String getmPriority() {
-        return mPriority;
+    public String getPriority() {
+        return priority;
     }
-
-
 }

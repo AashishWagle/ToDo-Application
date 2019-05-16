@@ -30,10 +30,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ListVi
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Task taskEntry = mTask.get(position);
-        String desc = taskEntry.getmDesc();
-        String priority = taskEntry.getmPriority();
-        String date = taskEntry.getmDate();
-        String time = taskEntry.getmTime();
+        String desc = taskEntry.getDesc();
+        String priority = taskEntry.getPriority();
+        String date = taskEntry.getDate();
+        String time = taskEntry.getTime();
 
         holder.chkTaskTitle.setText(desc);
         holder.mDateTime.setText(date+" "+time);
@@ -42,6 +42,9 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ListVi
 
     @Override
     public int getItemCount() {
+        if(mTask == null){
+            return 0;
+        }
         return mTask.size();
     }
 
