@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.todo_2do.database.Task;
+
 import java.util.List;
 
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ListViewHolder> {
@@ -23,7 +25,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ListVi
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemView = mInflater.inflate(R.layout.recyclerview_task,viewGroup);
+        View itemView = mInflater.inflate(R.layout.recyclerview_task,viewGroup,false);
         return new ListViewHolder(itemView);
     }
 
@@ -48,7 +50,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ListVi
         return mTask.size();
     }
 
-    public class ListViewHolder extends RecyclerView.ViewHolder
+    public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         private TextView mDateStatus;
         private TextView mDateTime;
@@ -59,6 +61,13 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ListVi
             mDateStatus = itemView.findViewById(R.id.dateSts);
             mDateTime = itemView.findViewById(R.id.txtDateTime);
             chkTaskTitle = itemView.findViewById(R.id.chkTask);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 }

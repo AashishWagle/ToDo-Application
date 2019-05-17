@@ -5,6 +5,8 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
+import com.example.todo_2do.database.Task;
+
 import java.util.List;
 
 public class TaskViewModel extends AndroidViewModel {

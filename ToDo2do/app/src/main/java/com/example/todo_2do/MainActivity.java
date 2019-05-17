@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.todo_2do.database.Task;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private TaskViewModel mViewModel;
     private LiveData<List<Task>> mAllTask;
     private RecyclerView mrvItem;
-    //private ImageView mivEmpty;
-    //private TextView mtxtEmpty;
+    private ImageView mivEmpty;
+    private TextView mtxtEmpty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(@Nullable List<Task> tasks) {
                 if(tasks.size() == 0){
                     mrvItem = findViewById(R.id.rvTasks);
-                    //mivEmpty = findViewById(R.id.ivEmpty);
-                    //mtxtEmpty = findViewById(R.id.txtEmpty);
-
-                    //mivEmpty.setVisibility(mrvItem.GONE);
-                    //mtxtEmpty.setVisibility(mtxtEmpty.GONE);
                     mrvItem.setVisibility(mrvItem.GONE);
-
+                }
+                else{
+                    mivEmpty = findViewById(R.id.ivEmpty);
+                    mtxtEmpty = findViewById(R.id.txtEmpty);
+                    mivEmpty.setVisibility(mivEmpty.GONE);
+                    mtxtEmpty.setVisibility(mtxtEmpty.GONE);
                 }
             }
         });

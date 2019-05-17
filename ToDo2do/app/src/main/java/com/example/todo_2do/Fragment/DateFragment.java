@@ -1,4 +1,4 @@
-package com.example.todo_2do;
+package com.example.todo_2do.Fragment;
 
 
 import android.app.DatePickerDialog;
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.todo_2do.R;
 
 import java.util.Calendar;
 

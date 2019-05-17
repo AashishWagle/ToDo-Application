@@ -1,4 +1,4 @@
-package com.example.todo_2do;
+package com.example.todo_2do.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;

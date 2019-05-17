@@ -1,4 +1,4 @@
-package com.example.todo_2do;
+package com.example.todo_2do.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

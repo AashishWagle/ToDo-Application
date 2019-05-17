@@ -1,4 +1,4 @@
-package com.example.todo_2do;
+package com.example.todo_2do.Fragment;
 
 
 import android.app.Dialog;
@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.example.todo_2do.R;
 
 import java.util.Calendar;
 
